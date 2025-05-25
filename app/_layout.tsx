@@ -5,12 +5,21 @@ import * as SplashScreen from 'expo-splash-screen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { trpc, trpcClient } from '@/lib/trpc';
 import { useAuthStore } from '@/stores/auth-store';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import { firebaseConfig } from '@/lib/firebaseConfig';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const { isAuthenticated, isAdmin } = useAuthStore();
   const [queryClient] = useState(() => new QueryClient());
+
+  useEffect(() => {
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+    console.log("Firebase initialized successfully!"); // For verification
+  }, []);
 
   useEffect(() => {
     const hideSplash = async () => {

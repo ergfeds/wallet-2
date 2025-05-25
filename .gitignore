@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Expo
+.expo/
+dist/
+app.config.js
+app.json
+web-build/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Misc
+.DS_Store
+# Firebase
+firebase-debug.log
